@@ -1,0 +1,9 @@
+mysql> SELECT * FROM employee_payroll;      #to retrieve all the data from the table
++----+---------+---------+------------+
+| id | name    | salary  | start      |
++----+---------+---------+------------+
+|  1 | Bill    | 1000000 | 2018-01-03 |
+|  2 | Terisa  | 2000000 | 2019-11-13 |
+|  3 | Charlie | 3000000 | 2020-05-21 |
++----+---------+---------+------------+
+3 rows in set (0.00 sec)
