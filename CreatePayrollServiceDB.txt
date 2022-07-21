@@ -1,0 +1,25 @@
+mysql> CREATE DATABASE paroll_service;     #to create database
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;                 #to show databases
++--------------------+
+| Database                 |
++--------------------+
+| information_schema |
+| mysql                       |       
+| paroll_service            |
+| performance_schema |
+| sys                             |
++--------------------  +
+5 rows in set (0.01 sec)
+
+mysql> USE paroll_service;             #going to that particular database
+Database changed
+
+mysql> SELECT DATABASE();        #selecting the database
++----------------+
+| DATABASE()     |
++----------------+
+| paroll_service |
++----------------+
+1 row in set (0.00 sec)
