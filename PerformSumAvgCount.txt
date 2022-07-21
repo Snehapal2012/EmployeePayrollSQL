@@ -1,0 +1,44 @@
+mysql> SELECT AVG(salary) FROM employee_payroll where gender = 'M' GROUP BY gender;                  #to perform avg() operation on salary and grouping by gender='M'
++-------------+
+| AVG(salary) |
++-------------+
+|     2000000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(salary) FROM employee_payroll GROUP BY gender;                                               #to perform avg() operation on salary and grouping by all gender
++-------------+
+| AVG(salary) |
++-------------+
+|     2000000 |
+|     3000000 |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT gender, AVG(salary) FROM employee_payroll GROUP BY gender;                                   #to perform avg() operation on salary and grouping according to all gender
++--------+-------------+
+| gender | AVG(salary) |
++--------+-------------+
+| M      |     2000000 |
+| F      |     3000000 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT gender, COUNT(name) FROM employee_payroll GROUP BY gender;                               #count employees according to the gender
++--------+-------------+
+| gender | COUNT(name) |
++--------+-------------+
+| M      |           2 |
+| F      |           1 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT gender, SUM(salary) FROM employee_payroll GROUP BY gender;                                       #total salary according to the gender
++--------+-------------+
+| gender | SUM(salary) |
++--------+-------------+
+| M      |     4000000 |
+| F      |     3000000 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
