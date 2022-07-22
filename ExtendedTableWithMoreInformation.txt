@@ -1,0 +1,38 @@
+mysql> ALTER TABLE employee_payroll RENAME COLUMN salary TO basic_pay;                                #rename salary column with basic_pay
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE employee_payroll ADD deductions DOUBLE NOT NULL AFTER basic_pay;         #adding some more columns to the table
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE employee_payroll ADD taxable_pay DOUBLE NOT NULL AFTER deductions;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE employee_payroll ADD tax DOUBLE NOT NULL AFTER taxable_pay;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE employee_payroll ADD net_pay DOUBLE NOT NULL AFTER tax;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe employee_payroll;                                                                                                                   #describing the table
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(150) | NO   |     | NULL    |                |
+| phone_number | varchar(250) | YES  |     | NULL    |                |
+| address      | varchar(250) | YES  |     | TBD     |                |
+| department   | varchar(150) | NO   |     | NULL    |                |
+| gender       | char(1)      | YES  |     | NULL    |                |
+| basic_pay    | double       | NO   |     | NULL    |                |
+| deductions   | double       | NO   |     | NULL    |                |
+| taxable_pay  | double       | NO   |     | NULL    |                |
+| tax          | double       | NO   |     | NULL    |                |
+| net_pay      | double       | NO   |     | NULL    |                |
+| start        | date         | NO   |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+12 rows in set (0.00 sec)
