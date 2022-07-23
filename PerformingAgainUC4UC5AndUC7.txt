@@ -1,0 +1,47 @@
+mysql> select * from employee_payroll;                                                                                                                                                                          #to retrieving all the data from the table
++----+---------+--------------+---------+------------+--------+-----------+------------+-------------+--------+---------+------------+
+| id | name    | phone_number | address | department | gender | basic_pay | deductions | taxable_pay | tax    | net_pay | start      |
++----+---------+--------------+---------+------------+--------+-----------+------------+-------------+--------+---------+------------+
+|  1 | Bill    | NULL         | NULL    |            | M      |   1000000 |          0 |           0 |      0 |       0 | 2018-01-03 |
+|  2 | Terisa  | NULL         | NULL    | Sales      | F      |   3000000 |          0 |           0 |      0 |       0 | 2019-11-13 |
+|  3 | Charlie | NULL         | NULL    |            | M      |   3000000 |          0 |           0 |      0 |       0 | 2020-05-21 |
+|  4 | Terisa  | NULL         | TBD     | Sales      | F      |   3000000 |    1000000 |     2000000 | 500000 | 1500000 | 2018-01-03 |
++----+---------+--------------+---------+------------+--------+-----------+------------+-------------+--------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select basic_pay from employee_payroll where name='Bill';                                                                                                                               #to get the basic pay for name=Bill
++-----------+
+| basic_pay |
++-----------+
+|   1000000 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee_payroll where start between CAST('2018-01-01' AS DATE) AND DATE(NOW());                                                   #using CAST() and NOW()
++----+---------+--------------+---------+------------+--------+-----------+------------+-------------+--------+---------+------------+
+| id | name    | phone_number | address | department | gender | basic_pay | deductions | taxable_pay | tax    | net_pay | start      |
++----+---------+--------------+---------+------------+--------+-----------+------------+-------------+--------+---------+------------+
+|  1 | Bill    | NULL         | NULL    |            | M      |   1000000 |          0 |           0 |      0 |       0 | 2018-01-03 |
+|  2 | Terisa  | NULL         | NULL    | Sales      | F      |   3000000 |          0 |           0 |      0 |       0 | 2019-11-13 |
+|  3 | Charlie | NULL         | NULL    |            | M      |   3000000 |          0 |           0 |      0 |       0 | 2020-05-21 |
+|  4 | Terisa  | NULL         | TBD     | Sales      | F      |   3000000 |    1000000 |     2000000 | 500000 | 1500000 | 2018-01-03 |
++----+---------+--------------+---------+------------+--------+-----------+------------+-------------+--------+---------+------------+
+4 rows in set (0.01 sec)
+
+mysql> select SUM(basic_pay) from employee_payroll where gender='F' group by gender;                                                                                             #to get total salary by gender='F'
++----------------+
+| SUM(basic_pay) |
++----------------+
+|        6000000 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select name , SUM(basic_pay) from employee_payroll group by name;                                                                                                         #to get name and according the salary
++---------+----------------+
+| name    | SUM(basic_pay) |
++---------+----------------+
+| Bill    |        1000000 |
+| Terisa  |        6000000 |
+| Charlie |        3000000 |
++---------+----------------+
+3 rows in set (0.00 sec)
